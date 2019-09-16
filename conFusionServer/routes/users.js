@@ -80,7 +80,7 @@ router.post('/login', (req, res, next) =>{
 router.get('/logout', (req, res) => {
 	if(req.session){
 		req.session.destroy();
-		res.clearCookie('session-id');
+		res.clearCookie('session-id', {httpOnly:true,path:"/"});
 		res.redirect('/');
 	}
 	else{
